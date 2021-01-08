@@ -1,0 +1,130 @@
+html {
+    height: 100%;
+    font-family: 'Montserrat';
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    /* Light Mode */
+    --bg: #fcfcfc;
+    --bg-panel: #ebebeb;
+    --color-headings: #07f;
+    --color-text: #333;
+    --icon-color: #333;   
+    /* Dark Mode */
+    --dark-bg: #333;
+    --dark-bg-panel: #434343;
+    --dark-color-headings: #3694ff;
+    --dark-color-text: #b5b5b5;
+    --dark-icon-color: #fff; 
+}
+
+.wrapper body {
+    background-color: var(--bg);
+}
+.wrapper h2{
+    text-align: center;
+    color: var(--color-text);
+}
+.wrapper .container {
+    background-color: var(--bg-panel);
+    width: 500px;
+    margin: 2rem auto;  
+    padding: 1.25rem 1.75rem;
+    border-radius: .5rem
+}
+.wrapper .container h1 {
+    margin: 0;
+    color: var(--color-headings);
+}
+.wrapper .container p {
+    color: var(--color-text);
+    grid-area: content;
+    font-size: 1.1em;
+    line-height: 1.8em;
+}
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 52px;
+    height: 27px;
+    background: grey;
+    float: right;
+    border-radius: 100px;
+    position: relative;
+    /* margin: 0 .5rem; */
+}
+label:after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+.wrapper input:checked + label {
+    background: var(--color-headings);
+}
+input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+label:active:after {
+    width: 45px;
+}
+html.transition, html.transition *, html.transition *:before, html.transition *:after {
+    transition: all 750ms !important;
+    transition-delay: 0 !important;
+}
+.wrapper .toggle-container svg {
+    color: var(--icon-color);
+    font-size: 1.2rem; padding: .2rem .5rem .5rem .5rem;
+}
+.toggle-container {
+    position: relative;
+}
+.toggle-container label{
+    position: absolute;
+    right: 5%
+}
+.toggle-container .icon-moon, .toggle-container .icon-sun{
+    position: absolute;
+}
+.toggle-container .icon-moon{
+    right: 1%; 
+}
+.toggle-container .icon-sun{
+    right: 11%; 
+}
+
+
+/* Dark Mode */
+.wrapper.dark body {
+    background-color: var(--dark-bg);
+}
+.wrapper.dark .container {
+    background-color: var(--dark-bg-panel);
+}
+.wrapper.dark .container h1 {
+    color: var(--dark-color-headings);
+}
+.wrapper.dark .container p {
+    color: var(--dark-color-text);
+}
+.wrapper.dark input:checked + label {
+    background: var(--dark-color-headings);
+}
+.wrapper.dark .toggle-container svg {
+    color: var(--dark-icon-color);
+}
+.wrapper.dark h2{
+    color: var(--dark-color-text);
+}
