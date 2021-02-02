@@ -11,17 +11,17 @@ html {
     --color-headings: #07f;
     --color-text: #333;
     --icon-color: #333;   
-    /* Dark Mode */
-    --dark-bg: #333;
-    --dark-bg-panel: #434343;
-    --dark-color-headings: #3694ff;
-    --dark-color-text: #b5b5b5;
-    --dark-icon-color: #fff; 
 }
 
-.wrapper body {
-    background-color: var(--bg);
+/* Dark Mode */
+html[data-theme='dark'] {
+    --bg: #333333;
+    --bg-panel: #434343;
+    --color-headings: #3694FF;
+    --color-text: #B5B5B5;
+    --icon-color: #fefefe;
 }
+body { background-color: var(--bg) }
 .wrapper h2{
     text-align: center;
     color: var(--color-text);
@@ -68,63 +68,37 @@ label:after {
     height: 20px;
     background: #fff;
     border-radius: 90px;
+    z-index: 100;
     transition: 0.3s;
 }
-.wrapper input:checked + label {
-    background: var(--color-headings);
-}
+input:checked + label { background: var(--color-headings) }
 input:checked + label:after {
     left: calc(100% - 5px);
     transform: translateX(-100%);
 }
-label:active:after {
-    width: 45px;
-}
+label:active:after { width: 45px }
 html.transition, html.transition *, html.transition *:before, html.transition *:after {
     transition: all 750ms !important;
     transition-delay: 0 !important;
 }
-.wrapper .toggle-container svg {
+.toggle-container svg {
     color: var(--icon-color);
     font-size: 1.2rem; padding: .2rem .5rem .5rem .5rem;
 }
-.toggle-container {
-    position: relative;
-}
+.toggle-container { position: relative }
 .toggle-container label{
     position: absolute;
     right: 5%
 }
 .toggle-container .icon-moon, .toggle-container .icon-sun{
-    position: absolute;
+    position: absolute; color: var(--icon-color);
 }
-.toggle-container .icon-moon{
-    right: 1%; 
+.toggle-container .icon-moon {     
+    right: 4.5%;
+    top: 1px; 
 }
-.toggle-container .icon-sun{
-    right: 11%; 
-}
-
-
-/* Dark Mode */
-.wrapper.dark body {
-    background-color: var(--dark-bg);
-}
-.wrapper.dark .container {
-    background-color: var(--dark-bg-panel);
-}
-.wrapper.dark .container h1 {
-    color: var(--dark-color-headings);
-}
-.wrapper.dark .container p {
-    color: var(--dark-color-text);
-}
-.wrapper.dark input:checked + label {
-    background: var(--dark-color-headings);
-}
-.wrapper.dark .toggle-container svg {
-    color: var(--dark-icon-color);
-}
-.wrapper.dark h2{
-    color: var(--dark-color-text);
+.toggle-container .icon-sun {     
+    right: 9%;
+    top: 1px;
+    z-index: 100; 
 }

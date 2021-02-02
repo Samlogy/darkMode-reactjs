@@ -2,24 +2,31 @@ import React, { useState, useEffect } from 'react';
 
 
 const useDarkMode = () => {
-    const [theme, setTheme] = useState({});
+    const [theme, setTheme] = useState({ active: false, value: '' });
 
     /* get user Preferencies (Browser) */
     const getPreferencies = () => {
         const themePreference = window.localStorage.getItem('BlogTheme');
-        if(themePreference){
+        if (themePreference) {
             themePreference === 'light' ? setTheme({ active: false, value: 'light' }) : 
             setTheme({ active: true, value: 'dark' });
-        }else{ setTheme({ active: false, value: 'light'}) }
+            document.documentElement.setAttribute('data-theme', themePreference);
+            
+        } else { 
+            setTheme({ active: false, value: 'light' }); 
+            document.documentElement.setAttribute('data-theme', themePreference) 
+        }
     };
     /* Switch Change */
     const toggleTheme = () => {
-        if(theme.active) {
+        if (theme.active) {
             trans(); 
+            document.documentElement.setAttribute('data-theme', 'light')
             setTheme({...theme, active: !theme.active, value: 'light'}); 
             window.localStorage.setItem('BlogTheme', 'light');
         } else { 
             trans(); 
+            document.documentElement.setAttribute('data-theme', 'dark')
             setTheme({...theme, active: !theme.active, value: 'dark'}); 
             window.localStorage.setItem('BlogTheme', 'dark');
         } 
@@ -32,7 +39,7 @@ const useDarkMode = () => {
         }, 1000)
     };
     
-    useEffect(() => { getPreferencies() }, []);
+    useEffect(() => { getPreferencies() }, [theme.active]);
   
     return [theme, toggleTheme]
   };
